@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.acm</groupId>
-    <artifactId>hotelgestion</artifactId>
+    <artifactId>HotelManagementApp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>hotelgestion</name>
-    <description>hotelgestion</description>
+    <name>HotelManagementApp</name>
+    <description>HotelManagementApp</description>
     <url/>
     <licenses>
         <license/>
