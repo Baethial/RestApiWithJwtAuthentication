@@ -34,7 +34,7 @@ A comprehensive hotel management REST API built with Spring Boot and PostgreSQL 
 ### 1. Clone the Repository
 ```bash
 git clone <repository-url>
-cd hotelgestion
+cd HotelManagementApp
 ```
 
 ### 2. Database Setup
