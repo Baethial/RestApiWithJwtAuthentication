@@ -16,11 +16,11 @@ public class UserDetailsServiceJpaImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return usuarioJpaRepository.findByNombreUsuario(username).
-                map(user -> User.builder()
+        return usuarioJpaRepository.findByNombreUsuario(username)
+                .map(user -> User.builder()
                         .username(user.getNombreUsuario())
                         .password(user.getContrasena())
-                        .authorities("ROLE_USER")
+                        .authorities("ROLE_" + user.getRol()) // Use actual role from database
                         .build())
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
     }

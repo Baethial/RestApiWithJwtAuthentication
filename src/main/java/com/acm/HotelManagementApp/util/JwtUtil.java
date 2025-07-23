@@ -41,6 +41,16 @@ public class JwtUtil {
                 .compact();
     }
 
+    public String generateToken(String username, String role) {
+        return Jwts.builder()
+                .setSubject(username)
+                .claim("role", role)
+                .issuedAt(new Date(System.currentTimeMillis()))
+                .expiration(new Date(System.currentTimeMillis() + Duration.ofMinutes(expirationTime).toMillis()))
+                .signWith(privateKey, Jwts.SIG.RS256)
+                .compact();
+    }
+
     public boolean validateToken(String token) {
         try {
             Claims claims = getClaimsFromToken(token);
@@ -63,5 +73,9 @@ public class JwtUtil {
 
     public String getUsernameFromToken(String token) {
         return getClaim(token, Claims::getSubject);
+    }
+
+    public String getRoleFromToken(String token) {
+        return getClaim(token, claims -> (String) claims.get("role"));
     }
 }

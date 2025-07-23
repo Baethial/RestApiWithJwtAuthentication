@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
@@ -39,10 +40,20 @@ public class AuthController {
                     new UsernamePasswordAuthenticationToken(usuarioDTO.getNombreUsuario(), usuarioDTO.getContrasena())
             );
             User user = (User) authentication.getPrincipal();
-            String token = jwtUtil.generateToken(user.getUsername());
+
+            // Extract role from authorities (remove "ROLE_" prefix)
+            String role = user.getAuthorities().stream()
+                    .findFirst()
+                    .map(GrantedAuthority::getAuthority)
+                    .map(authority -> authority.replace("ROLE_", ""))
+                    .orElse("USER");
+
+            String token = jwtUtil.generateToken(user.getUsername(), role);
+
             Map<String, Object> response = new HashMap<>();
             response.put("token", token);
             response.put("username", user.getUsername());
+            response.put("role", role);
             return ResponseEntity.ok(response);
 
          } catch (Exception e) {
