@@ -10,7 +10,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -43,6 +42,6 @@ public class ReservaDTO {
     private Long cantidadDias;
     private Boolean estado;
     private LocalDateTime fechaReserva;
-    private List<Long> idsFacturas;
-    private List<Long> idsPagos;
+    // private List<Long> idsFacturas;
+    // private List<Long> idsPagos;
 }

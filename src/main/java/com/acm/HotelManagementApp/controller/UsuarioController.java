@@ -37,7 +37,9 @@ public class UsuarioController {
 
     @PostMapping
     public ResponseEntity<UsuarioDTO> saveUsuario(@Valid @RequestBody UsuarioDTO usuarioDTO) {
+        log.info("UsuarioDTO: {}", usuarioDTO);
         Usuario usuario = usuarioMapper.dtoToModel(usuarioDTO);
+        log.info("Usuario: {}", usuario);
         Usuario savedUsuario = usuarioService.save(usuario);
         UsuarioDTO savedUsuarioDTO = usuarioMapper.modelToDto(savedUsuario);
         return ResponseEntity.ok(savedUsuarioDTO);

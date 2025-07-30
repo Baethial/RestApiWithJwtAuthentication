@@ -19,6 +19,5 @@ public class Hotel {
     private String telefono;
     private String correo;
     private String direccion;
-
     private List<Habitacion> habitaciones;
 }

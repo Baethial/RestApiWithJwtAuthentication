@@ -30,14 +30,12 @@ public class UsuarioDTO {
 
     @NotBlank(message = "Role cannot be blank")
     @NotNull(message = "Role cannot be null")
-    @Pattern(regexp = "^(CLIENTE|EMPLEADO|ADMINISTRADOR|ADMINISTRADOR_GENERAL)$",
-            message = "Role must be: CLIENTE, EMPLEADO, ADMINISTRADOR, or ADMINISTRADOR_GENERAL")
+    @Pattern(regexp = "^(USUARIO|CLIENTE|EMPLEADO|ADMINISTRADOR|ADMINISTRADOR_GENERAL)$",
+            message = "Role must be: USUARIO, CLIENTE, EMPLEADO, ADMINISTRADOR, or ADMINISTRADOR_GENERAL")
     private String rol;
 
-    // Optional?
-
-    private Long idCliente;
-    private Long idEmpleado;
-    private Long idAdministrador;
-    private Long idAdministradorGeneral;
+    private ClienteDTO cliente;
+    private EmpleadoDTO empleado;
+    private AdministradorDTO administrador;
+    private AdministradorGeneralDTO administradorGeneral;
 }

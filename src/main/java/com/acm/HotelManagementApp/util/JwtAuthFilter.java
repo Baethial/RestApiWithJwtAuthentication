@@ -35,7 +35,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                 
                 // If role is null (for tokens created without role), set a default
                 if (role == null) {
-                    role = "USER";
+                    role = "USUARIO";
                 }
                 
                 SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + role);

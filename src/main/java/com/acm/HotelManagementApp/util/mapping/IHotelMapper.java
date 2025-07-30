@@ -20,10 +20,8 @@ public interface IHotelMapper extends IMapper<Hotel, HotelEntity, HotelDTO> {
     HotelEntity modelToEntity(Hotel model);
 
     @Override
-    @Mapping(target = "habitaciones", ignore = true)
     Hotel dtoToModel(HotelDTO dto);
 
     @Override
-    @Mapping(target = "idsHabitaciones", ignore = true)
     HotelDTO modelToDto(Hotel model);
 }
